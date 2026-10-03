@@ -1,0 +1,17 @@
+services:
+  immich-mcp:
+    image: ghcr.io/xcfa/immich-mcp:latest
+    build: .
+    container_name: immich-mcp
+    env_file: .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    # If Immich runs in another compose project, join its network and use
+    # IMMICH_URL=http://immich-server:2283:
+    # networks: [immich]
+
+# networks:
+#   immich:
+#     external: true
+#     name: immich_default
